@@ -420,8 +420,13 @@ ul { list-style: none; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
 }
-
-.timeline { border-left: 2px solid var(--line); padding-left: 22px; }
+.timeline {
+  list-style: none;      /* Thêm dòng này */
+  border-left: 2px solid var(--line);
+  padding-left: 22px;
+  margin: 0;             /* Khuyến nghị thêm */
+}
+/*.timeline { border-left: 2px solid var(--line); padding-left: 22px; }*/
 .timeline li { position: relative; padding-bottom: 6px; }
 .timeline li::before {
   content: "";
