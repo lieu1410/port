@@ -67,10 +67,10 @@
 
 
 
-  /* Base Colors */
+  /* Base Colors (single source of truth — everything below feeds the rest of the file) */
 
-  --white-1: #FFFFFF;
-  --white-2: #F8FAFC;
+  --white-1: #1E293B;              /* dark navy text used on light chips */
+  --white-2: #0F172A;              /* headings / names / primary text */
 
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
@@ -92,22 +92,18 @@
   --card-bg: #FFFFFF;
   --body-bg: #F8FAFC;
 
-}
-
-  /* solid */
-
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  /* solid — mapped to the light theme so the rest of the stylesheet
+     (which references these names everywhere) renders correctly */
+  --jet: #E2E8F0;                  /* borders / separators / track bg */
+  --onyx: #F1F5F9;                 /* light chip / pill backgrounds */
+  --eerie-black-1: #FFFFFF;        /* inner icon bg */
+  --eerie-black-2: #FFFFFF;        /* card / sidebar / article bg */
+  --smoky-black: #F8FAFC;          /* page background */
+  --orange-yellow-crayola: #2563EB; /* primary accent (was accent-orange, now blue) */
+  --vegas-gold: #1D4ED8;           /* secondary accent (timeline dates, etc.) */
+  --light-gray: #475569;           /* body / paragraph text */
+  --light-gray-70: #94A3B8;        /* muted / meta text */
+  --bittersweet-shimmer: #DC2626;  /* error / invalid state */
 
   /**
    * typography
@@ -133,14 +129,14 @@
   --fw-600: 600;
 
   /**
-   * shadow
+   * shadow (softened + tinted navy for a light background)
    */
-  
-  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
-  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
-  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
-  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
-  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+
+  --shadow-1: -4px 8px 24px hsla(222, 47%, 11%, 0.10);
+  --shadow-2: 0 16px 30px hsla(222, 47%, 11%, 0.10);
+  --shadow-3: 0 16px 40px hsla(222, 47%, 11%, 0.10);
+  --shadow-4: 0 25px 50px hsla(222, 47%, 11%, 0.10);
+  --shadow-5: 0 24px 80px hsla(222, 47%, 11%, 0.14);
 
   /**
    * transition
@@ -188,7 +184,7 @@ input, textarea {
 
 ::selection {
   background: var(--orange-yellow-crayola);
-  color: var(--smoky-black);
+  color: #FFFFFF;
 }
 
 :focus { outline-color: var(--orange-yellow-crayola); }
@@ -419,7 +415,10 @@ main {
 }
 
 .info_more-btn:hover,
-.info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
+.info_more-btn:focus {
+  background: var(--bg-gradient-yellow-1);
+  color: #FFFFFF;
+}
 
 .info_more-btn:hover::before,
 .info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
@@ -484,7 +483,7 @@ main {
 }
 
 
-.social-item .social-link:hover { color: var(--light-gray); }
+.social-item .social-link:hover { color: var(--orange-yellow-crayola); }
 
 
 
@@ -499,7 +498,7 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: hsla(0, 0%, 100%, 0.85);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
@@ -523,7 +522,7 @@ main {
 }
 
 .navbar-link:hover,
-.navbar-link:focus { color: var(--light-gray-70); }
+.navbar-link:focus { color: var(--white-2); }
 
 .navbar-link.active { color: var(--orange-yellow-crayola); }
 
@@ -681,7 +680,7 @@ main {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: hsl(0, 0%, 5%);
+  background: hsl(222, 47%, 11%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -690,7 +689,7 @@ main {
 }
 
 .overlay.active {
-  opacity: 0.8;
+  opacity: 0.5;
   visibility: visible;
   pointer-events: all;
 }
@@ -946,6 +945,7 @@ main {
   padding: 6px;
   border: 1px solid var(--jet);
   border-radius: 14px;
+  box-shadow: var(--shadow-2);
   z-index: 2;
   opacity: 0;
   visibility: hidden;
@@ -970,7 +970,7 @@ main {
   border-radius: 8px;
 }
 
-.select-item button:hover { --eerie-black-2: hsl(240, 2%, 20%); }
+.select-item button:hover { --eerie-black-2: hsl(210, 40%, 96%); }
 
 .project-list {
   display: grid;
@@ -1014,12 +1014,12 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item > a:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+.project-item > a:hover .project-img::before { background: hsla(222, 47%, 11%, 0.5); }
 
 .project-item-icon-box {
   --scale: 0.8;
 
-  background: var(--jet);
+  background: #FFFFFF;
   color: var(--orange-yellow-crayola);
   position: absolute;
   top: 50%;
@@ -1030,6 +1030,7 @@ main {
   border-radius: 12px;
   opacity: 0;
   z-index: 1;
+  box-shadow: var(--shadow-2);
   transition: var(--transition-1);
 }
 
@@ -1178,7 +1179,7 @@ main {
   width: 100%;
   height: 100%;
   border: none;
-  filter: grayscale(1) invert(1);
+  filter: grayscale(0.4);
 }
 
 .contact-form { margin-bottom: 10px; }
@@ -1194,6 +1195,7 @@ main {
 
 .form-input {
   color: var(--white-2);
+  background: #FFFFFF;
   font-size: var(--fs-6);
   font-weight: var(--fw-400);
   padding: 13px 20px;
@@ -1202,7 +1204,7 @@ main {
   outline: none;
 }
 
-.form-input::placeholder { font-weight: var(--fw-500); }
+.form-input::placeholder { color: var(--light-gray-70); font-weight: var(--fw-500); }
 
 .form-input:focus { border-color: var(--orange-yellow-crayola); }
 
@@ -1221,8 +1223,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 .form-btn {
   position: relative;
   width: 100%;
-  background: var(--border-gradient-onyx);
-  color: var(--orange-yellow-crayola);
+  background: var(--bg-gradient-yellow-1);
+  color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1240,7 +1242,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--bg-gradient-jet);
+  background: transparent;
   border-radius: inherit;
   z-index: -1;
   transition: var(--transition-1);
@@ -1248,18 +1250,18 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn ion-icon { font-size: 16px; }
 
-.form-btn:hover { background: var(--bg-gradient-yellow-1); }
+.form-btn:hover { background: var(--blue-hover); }
 
-.form-btn:hover::before { background: var(--bg-gradient-yellow-2); }
+.form-btn:hover::before { background: transparent; }
 
 .form-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.form-btn:disabled:hover { background: var(--border-gradient-onyx); }
+.form-btn:disabled:hover { background: var(--bg-gradient-yellow-1); }
 
-.form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
+.form-btn:disabled:hover::before { background: transparent; }
 
 
 
@@ -1658,7 +1660,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     transition: var(--transition-1);
   }
 
-  .filter-item button:hover { color: var(--light-gray-70); }
+  .filter-item button:hover { color: var(--white-2); }
 
   .filter-item button.active { color: var(--orange-yellow-crayola); }
 
@@ -1701,9 +1703,9 @@ textarea.form-input::-webkit-resizer { display: none; }
     * shadow
     */
 
-    --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.125);
-    --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
-    --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.125);
+    --shadow-1: -4px 8px 24px hsla(222, 47%, 11%, 0.06);
+    --shadow-2: 0 16px 30px hsla(222, 47%, 11%, 0.06);
+    --shadow-3: 0 16px 40px hsla(222, 47%, 11%, 0.06);
 
   }
 
@@ -1816,13 +1818,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   body::-webkit-scrollbar-thumb {
     border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
+    background: hsla(222, 47%, 11%, 0.15);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
-                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.4),
+                inset -1px -1px 0 hsla(0, 0%, 100%, 0.4);
   }
 
-  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+  body::-webkit-scrollbar-thumb:hover { background: hsla(222, 47%, 11%, 0.25); }
 
   body::-webkit-scrollbar-button { height: 60px; }
 
