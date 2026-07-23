@@ -24,7 +24,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 90px; 
+  font-size: 18px;   /* thêm dòng này — mặc định là 16px */
+}
 
 body {
   font-family: var(--font-body);
