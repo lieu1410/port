@@ -383,21 +383,61 @@ ul { list-style: none; }
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+
 .research-card {
+  display: block;                 /* Quan trọng khi dùng <a> */
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 22px;
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;          /* Bỏ gạch chân */
+  color: inherit;                 /* Giữ màu chữ */
+  cursor: pointer;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
 }
-.research-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+.research-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--blue-300);
+}
+
+.research-card:visited {
+  color: inherit;
+}
+
+.research-card:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 3px;
+}
+
 .research-card h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+
   font-size: 0.98rem;
   color: var(--ink-900);
   margin-bottom: 16px;
   min-height: 48px;
+  line-height: 1.45;
 }
+
+.research-card h3 ion-icon {
+  font-size: 18px;
+  color: var(--blue-600);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.research-card:hover h3 ion-icon {
+  transform: translateX(3px);
+}
+
 .research-meta {
   display: flex;
   align-items: center;
@@ -405,6 +445,7 @@ ul { list-style: none; }
   font-size: 0.85rem;
   color: var(--ink-500);
 }
+
 .tag {
   background: var(--blue-50);
   color: var(--blue-600);
@@ -413,7 +454,6 @@ ul { list-style: none; }
   border-radius: 999px;
   font-size: 0.78rem;
 }
-
 /* ==================== EXPERIENCE / EDUCATION ==================== */
 .two-col-loose {
   display: grid;
