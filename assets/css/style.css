@@ -338,7 +338,7 @@ ul { list-style: none; }
   align-items: center;
   gap: 10px;
 
-  font-size: 1.9rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--ink-900);
 }
@@ -346,6 +346,9 @@ ul { list-style: none; }
 .block-title ion-icon {
   color: var(--blue-600);
   font-size: 1.5rem;
+}
+.domain-title {
+  margin-top: 28px;
 }
 /* ==================== PROJECTS ==================== */
 .project-grid {
