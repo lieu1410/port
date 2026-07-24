@@ -338,15 +338,16 @@ ul { list-style: none; }
   align-items: center;
   gap: 8px;
 
-  margin: 24px 0 14px;
+  margin-top: 36px;      /* tăng khoảng cách */
+  margin-bottom: 18px;
 
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink-900);
 }
 
 .sub-block-title ion-icon {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--blue-600);
 }
 /* ==================== PROJECTS ==================== */
