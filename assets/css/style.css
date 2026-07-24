@@ -308,22 +308,15 @@ ul { list-style: none; }
   justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 8px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #fff;
   flex-shrink: 0;
 }
-.skill-icon.excel { background: #16a34a; }
-.skill-icon.sql { background: #2563eb; }
-.skill-icon.python { background: #f59e0b; }
-.skill-icon.powerbi { background: #eab308; }
-.skill-icon.stata { background: #1e3a8a; }
-.skill-icon.git { background: #ef4444; }
-.skill-icon.tableau { background: #0ea5e9; }
-.skill-icon.r { background: #6366f1; }
-.skill-icon.stats { background: #334155; }
 
+.skill-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
 /* ==================== PROJECTS ==================== */
 .project-grid {
   display: grid;
