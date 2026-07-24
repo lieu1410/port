@@ -333,22 +333,19 @@ ul { list-style: none; }
 }
 
 /* ===== Domain Knowledge Title ===== */
-.sub-block-title {
+.block-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
-  margin-top: 36px;      /* tăng khoảng cách */
-  margin-bottom: 18px;
-
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.9rem;
+  font-weight: 800;
   color: var(--ink-900);
 }
 
-.sub-block-title ion-icon {
-  font-size: 22px;
+.block-title ion-icon {
   color: var(--blue-600);
+  font-size: 1.5rem;
 }
 /* ==================== PROJECTS ==================== */
 .project-grid {
